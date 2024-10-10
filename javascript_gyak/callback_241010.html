@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>js_231010</title>
+</head>
+<body>
+  <script>
+/*     const nevKi = () => {
+      console.log("Imre")
+    }
+    nevKi();
+    setTimeout(nevKi, 1);
+    console.log("holló"); */
+
+
+
+    
+/*    function receptLekerdezes(){
+      setTimeout(() => {
+        const recepetId = [676, 102, 34, 1089, 321];
+        console.log(recepetId);
+        setTimeout((id) => {
+          const recept = {
+            cim: 'Gulyás leves',
+            kategoria: 'Levesek'
+          };
+          console.log(`${id}: ${recept.cim}`);
+          setTimeout((ketegoria) => {
+            const levesek = [
+              {cim: 'Nyirségi gombócleves', ketegoria: ' Levesek'},
+              {cim: 'Borsóleves', kategoria: 'Levesek'},
+            ];
+            console.log(levesek)
+          }, 1500, recept.kategoria);
+        }, 1500, recepetId[1]);
+    }, 2000)
+    }
+
+    receptLekerdezes(); */
+
+
+    const azonositoklekerese = new Promise((resolve, reject) =>{
+      setTimeout(() => {
+        resolve([676, 102, 34, 1089, 321]);
+        reject('Valami hiba'); //hibakezelés ha a resolve nem jó 
+      }, 2000);
+    });
+
+    const receptLekeres = receptId => {
+      return new Promise ((resolve, reject) =>{
+        setTimeout((id) => {
+          const recept = {
+            cim: 'Gulyás leves',
+            kategoria: 'Levesek'
+          };
+          resolve(`${id}: ${recept.cim}`);
+        }, 1500, receptId);
+      });
+    };
+
+    const ketegoriaiLekeres = kategoria => {
+      return new Promise((resolve, reject) =>{
+        setTimeout(kat =>{
+          const levesek = [
+              {cim: 'Nyirségi gombócleves', kategoria: ' Levesek'},
+              {cim: 'Borsóleves', kategoria: 'Levesek'},
+            ];
+            resolve(levesek);
+        }, 1500, kategoria);
+      });
+    };
+
+/*     azonositoklekerese
+      .then((azonositok) => {
+        console.log(azonositok);
+        return receptLekeres(azonositok[1]);
+      })
+      .then(recept => {
+        console.log(recept)
+        return ketegoriaiLekeres(recept.kategoria)
+      })
+      .then(kategoria =>{
+        console.log(kategoria);
+      })
+      .catch(hiba => {
+        console.log(hiba);
+      }); */
+
+      async function lekeres() {
+        try {
+          const azonositok = await azonositoklekerese;
+          console.log(azonositok);
+          const recept = await receptLekeres(azonositok[1]);
+          console.log(recept);
+          const kategoria = await ketegoriaiLekeres(recept.kategoria);
+          console.log(kategoria);
+        } catch (error){
+          console.log(error.massege);
+        }
+      }
+
+      lekeres()
+  </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>E-mail ellenőrzés</title>
+</head>
+<body>
+  <form id="form9">
+    <input type="email" id="emailInput" placeholder="Írj be egy e-mail címet">
+    <button type="button" onclick="checkEmail()">Ellenőrzés</button>
+  </form>
+  <p id="emailMessage"></p>
+
+  <script>
+    function checkEmail() {
+      const email = document.getElementById("emailInput").value;
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (emailPattern.test(email)) {
+        document.getElementById("emailMessage").innerText = "Az e-mail cím helyes!";
+      } else {
+        document.getElementById("emailMessage").innerText = "Az e-mail cím helytelen!";
+      }
+    }
+  </script>
+</body>
+</html>

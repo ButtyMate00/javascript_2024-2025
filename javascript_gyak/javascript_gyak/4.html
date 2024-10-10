@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jelölőnégyzetek</title>
+</head>
+<body>
+  <form id="form4">
+    <input type="checkbox" id="option1" value="Opció 1"> Opció 1<br>
+    <input type="checkbox" id="option2" value="Opció 2"> Opció 2<br>
+    <input type="checkbox" id="option3" value="Opció 3"> Opció 3<br>
+    <button type="button" onclick="showChecked()">Küldés</button>
+  </form>
+  <p id="checkedMessage"></p>
+
+  <script>
+    function showChecked() {
+      let checkedOptions = [];
+      if (document.getElementById("option1").checked) {
+        checkedOptions.push("Opció 1");
+      }
+      if (document.getElementById("option2").checked) {
+        checkedOptions.push("Opció 2");
+      }
+      if (document.getElementById("option3").checked) {
+        checkedOptions.push("Opció 3");
+      }
+      document.getElementById("checkedMessage").innerText = "Kiválasztott opciók: " + checkedOptions.join(", ");
+    }
+  </script>
+</body>
+</html>

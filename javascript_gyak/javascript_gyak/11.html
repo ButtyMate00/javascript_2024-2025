@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Összetett űrlap</title>
+</head>
+<body>
+  <form id="form11">
+    <input type="text" id="nameInput" placeholder="Név"><br>
+    <input type="email" id="emailInput" placeholder="E-mail"><br>
+    <input type="number" id="ageInput" placeholder="Kor"><br>
+    <button type="button" onclick="validateForm()">Beküldés</button>
+  </form>
+  <p id="formMessage"></p>
+
+  <script>
+    function validateForm() {
+      const name = document.getElementById("nameInput").value;
+      const email = document.getElementById("emailInput").value;
+      const age = document.getElementById("ageInput").value;
+
+      if (name === "" || email === "" || age === "") {
+        document.getElementById("formMessage").innerText = "Minden mezőt ki kell tölteni!";
+      } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+        document.getElementById("formMessage").innerText = "Az e-mail cím helytelen!";
+      } else if (age < 18) {
+        document.getElementById("formMessage").innerText = "18 év felettiek jelentkezhetnek!";
+      } else {
+        document.getElementById("formMessage").innerText = "Űrlap sikeresen beküldve!";
+      }
+    }
+  </script>
+</body>
+</html>

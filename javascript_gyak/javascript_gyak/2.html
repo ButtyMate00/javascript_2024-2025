@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Szám beviteli mező</title>
+</head>
+<body>
+  <form id="form2">
+    <input type="number" id="inputNumber" placeholder="Írj be egy számot">
+    <button type="button" onclick="showNumber()">Küldés</button>
+  </form>
+  <p id="numberMessage"></p>
+
+  <script>
+    function showNumber() {
+      const number = document.getElementById("inputNumber").value;
+      document.getElementById("numberMessage").innerText = "Beírt szám: " + number;
+    }
+  </script>
+</body>
+</html>

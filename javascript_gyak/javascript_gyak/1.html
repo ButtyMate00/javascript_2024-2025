@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Szöveg beviteli mező</title>
+</head>
+<body>
+  <form id="form1">
+    <input type="text" id="inputText" placeholder="Írj be valamit">
+    <button type="button" onclick="showMessage()">Küldés</button>
+  </form>
+  <p id="message"></p>
+
+  <script>
+    function showMessage() {
+      const text = document.getElementById("inputText").value;
+      document.getElementById("message").innerText = "Beírt szöveg: " + text;   
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jelszó erősség ellenőrzése</title>
+</head>
+<body>
+  <form id="form10">
+    <input type="password" id="passwordInput" placeholder="Írj be egy jelszót">
+    <button type="button" onclick="checkPassword()">Ellenőrzés</button>
+  </form>
+  <p id="passwordMessage"></p>
+
+  <script>
+    function checkPassword() {
+      const password = document.getElementById("passwordInput").value;
+      const minLength = 8;
+      const hasUpperCase = /[A-Z]/.test(password);
+      const hasLowerCase = /[a-z]/.test(password);
+      const hasNumber = /\d/.test(password);
+
+      if (password.length >= minLength && hasUpperCase && hasLowerCase && hasNumber) {
+        document.getElementById("passwordMessage").innerText = "A jelszó erős!";
+      } else {
+        document.getElementById("passwordMessage").innerText = "A jelszó gyenge!";
+      }
+    }
+  </script>
+</body>
+</html>

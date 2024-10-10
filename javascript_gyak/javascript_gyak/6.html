@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Radio gombok</title>
+</head>
+<body>
+  <form id="form6">
+    <input type="radio" name="choice" value="Opció 1"> Opció 1<br>
+    <input type="radio" name="choice" value="Opció 2"> Opció 2<br>
+    <input type="radio" name="choice" value="Opció 3"> Opció 3<br>
+    <button type="button" onclick="showSelectedRadio()">Küldés</button>
+  </form>
+  <p id="radioMessage"></p>
+
+  <script>
+    function showSelectedRadio() {
+      const radios = document.getElementsByName("choice");
+      let selectedValue = null;
+      for (const radio of radios) {
+        if (radio.checked) {
+          selectedValue = radio.value;
+        }
+      }
+      document.getElementById("radioMessage").innerText = "Kiválasztott: " + selectedValue;
+    }
+  </script>
+</body>
+</html>

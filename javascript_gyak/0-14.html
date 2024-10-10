@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Map Példák</title>
+    <script>
+        // 1. Hozz létre egy üres Map-et, majd adj hozzá néhány kulcs-érték párt.
+        const myMap = new Map();
+        myMap.set('apple', 1);
+        myMap.set('banana', 2);
+        myMap.set('orange', 3);
+
+        // 2. Ellenőrizd, hogy egy adott kulcs már szerepel-e a Map-ben.
+        function checkKeyExists(key) {
+            return myMap.has(key);
+        }
+
+        // 3. Számold meg, hány kulcs-érték pár van a Map-ben.
+        function countEntries() {
+            return myMap.size;
+        }
+
+        // 4. Távolíts el egy kulcs-érték párt a Map-ből.
+        function removeEntry(key) {
+            myMap.delete(key);
+        }
+
+        // 5. Ellenőrizd, hogy a Map üres-e.
+        function isMapEmpty() {
+            return myMap.size === 0;
+        }
+
+        // 6. Hozz létre egy Map-et, amely szövegeket tartalmaz kulcsként és ezek hosszúságát értékül.
+        const stringLengthMap = new Map([
+            ['hello', 5],
+            ['world', 5],
+            ['JavaScript', 10]
+        ]);
+
+        // 7. Írj egy függvényt, amely összegzi a Map értékeit (hosszúságokat) és visszaadja az összeget.
+        function sumLengths(map) {
+            let sum = 0;
+            for (let length of map.values()) {
+                sum += length;
+            }
+            return sum;
+        }
+
+        // 8. Adj hozzá egy kulcs-érték párt a Map-hez csak akkor, ha a kulcs még nem szerepel benne.
+        function addEntryIfNotExists(key, value) {
+            if (!myMap.has(key)) {
+                myMap.set(key, value);
+            }
+        }
+
+        // 9. Módosítsd a Map egyik értékét, majd írd ki az új értéket.
+        function updateEntry(key, newValue) {
+            if (myMap.has(key)) {
+                myMap.set(key, newValue);
+                return myMap.get(key);
+            }
+            return null;
+        }
+
+        // 10. Távolítsd el az összes kulcs-érték párt a Map-ből.
+        function clearMap() {
+            myMap.clear();
+        }
+
+        // 11. Hozz létre egy Map-et, amelyben az év hónapjai a kulcsok, és azok napjainak számossága az értékek.
+        const monthDaysMap = new Map([
+            ['January', 31],
+            ['February', 28],
+            ['March', 31],
+            ['April', 30],
+            ['May', 31],
+            ['June', 30],
+            ['July', 31],
+            ['August', 31],
+            ['September', 30],
+            ['October', 31],
+            ['November', 30],
+            ['December', 31]
+        ]);
+
+        // 12. Ellenőrizd, hogy egy adott évszak (tavasz, nyár, ősz, tél) szerepel-e a Map kulcsai között.
+        function checkSeasonExists(season) {
+            const seasons = ['tavasz', 'nyár', 'ősz', 'tél'];
+            return seasons.includes(season);
+        }
+
+        // 13. Hozz létre egy Map-et, amelyben a személyek nevei a kulcsok, és az életkoruk az értékek.
+        const ageMap = new Map([
+            ['Anna', 25],
+            ['Béla', 30],
+            ['Cecília', 22]
+        ]);
+
+        // 14. Hozz létre egy függvényt, amely visszaadja a Map legidősebb személyét és az ő életkorát.
+        function getOldestPerson(map) {
+            let oldestPerson = null;
+            let maxAge = -1;
+
+            for (let [name, age] of map.entries()) {
+                if (age > maxAge) {
+                    maxAge = age;
+                    oldestPerson = name;
+                }
+            }
+
+            return { name: oldestPerson, age: maxAge };
+        }
+
+        // Tesztelő funkciók
+        function testMapFunctions() {
+            console.log("Kulcs 'apple' létezik-e a Map-ben?", checkKeyExists('apple')); // true
+            console.log("Kulcs-érték párok száma:", countEntries()); // 3
+            removeEntry('banana');
+            console.log("Banán eltávolítása után kulcs-érték párok száma:", countEntries()); // 2
+            console.log("Üres-e a Map?", isMapEmpty()); // false
+            console.log("Összegzett hosszúságok:", sumLengths(stringLengthMap)); // 20
+            addEntryIfNotExists('banana', 2);
+            console.log("Banán újra hozzáadva:", myMap.get('banana')); // 2
+            console.log("Banán új értéke:", updateEntry('apple', 5)); // 5
+            clearMap();
+            console.log("Map kiürítve. Üres-e?", isMapEmpty()); // true
+            console.log("Hónapok napjainak száma:", monthDaysMap.get('February')); // 28
+            console.log("Tavasz létezik-e?", checkSeasonExists('tavasz')); // true
+            console.log("Legidősebb személy:", getOldestPerson(ageMap)); // { name: 'Béla', age: 30 }
+        }
+    </script>
+</head>
+<body>
+    <h1>JavaScript Map Példák</h1>
+    <button onclick="testMapFunctions()">Teszteljük a Map függvényeket</button>
+</body>
+</html>

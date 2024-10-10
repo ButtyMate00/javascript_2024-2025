@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanulói Azonosítók</title>
+    <style>
+        /* Add your styles here */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tanulói Azonosítók</h1>
+    <form id="tanuloUrlap">
+        <label for="nev">Név:</label>
+        <input type="text" id="nev" name="nev"><br><br>
+        <label for="azonosito">Oktatási Azonosító:</label>
+        <input type="text" id="azonosito" name="azonosito"><br><br>
+        <button type="button" onclick="hozzaadTanulo()">Hozzáad</button>
+        <button type="button" onclick="torolTabla()">Mindent töröl</button>
+    </form>
+    <p id="hiba" class="error"></p>
+    <table id="tanuloTabla">
+        <thead>
+            <tr>
+                <th>Név</th>
+                <th>Oktatási Azonosító</th>
+                <th>Művelet</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        function hozzaadTanulo() {
+            const nev = document.getElementById('nev').value;
+            const azonosito = document.getElementById('azonosito').value;
+            const hibaElem = document.getElementById('hiba');
+            hibaElem.textContent = '';
+
+            if (!nev || !azonosito) {
+                hibaElem.textContent = 'Adja meg a nevet és az oktatási azonosítót.';
+                return;
+            }
+
+            if (!ervenyesAzonosito(azonosito)) {
+                hibaElem.textContent = 'Hibás oktatási azonosító.';
+                return;
+            }
+
+            const tabla = document.getElementById('tanuloTabla').getElementsByTagName('tbody')[0];
+            const ujSor = tabla.insertRow();
+            const nevCella = ujSor.insertCell(0);
+            const azonositoCella = ujSor.insertCell(1);
+            const muveletCella = ujSor.insertCell(2);
+
+            nevCella.textContent = nev;
+            azonositoCella.textContent = azonosito;
+            muveletCella.innerHTML = '<button onclick="torolSor(this)">X</button>';
+
+            document.getElementById('tanuloUrlap').reset();
+        }
+
+        function ervenyesAzonosito(azonosito) {
+            if (azonosito.length !== 11 || azonosito[0] !== '7') return false;
+
+            let osszeg = 0;
+            for (let i = 0; i < 10; i++) {
+                osszeg += parseInt(azonosito[i]) * (i + 1);
+            }
+            return osszeg % 11 === parseInt(azonosito[10]);
+        }
+
+        function torolSor(gomb) {
+            const sor = gomb.parentNode.parentNode;
+            sor.parentNode.removeChild(sor);
+        }
+
+        function torolTabla() {
+            const tabla = document.getElementById('tanuloTabla').getElementsByTagName('tbody')[0];
+            tabla.innerHTML = '';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!--
+<body>
+    <table>
+
+    </table>
+<style>
+    table{
+        border: solid 1px green;
+        box-shadow: 4px 4px 4px #6A6;
+        border-radius: 8px;
+        background-color: #3A3;
+    }
+    table tr td {
+        font-size: 12px;
+        border-radius: 8px;
+        background-color: #CFC;
+    }
+    table tr:nth-child(5n) td, table tr td:nth-child(5n){
+        background-color: #8f8;
+    }
+    table tr:first-child td, table tr td:first-child{
+        background-color: #4c4;
+        font-weight: bold;
+    }
+
+</style>
+<script>
+const w = 20;
+const h = 20;
+const table = document.getElementsByTagName("table")[0];
+let row;
+let column;
+for (let i = 1; i <= h; i++){
+    row = document.createElement("tr");
+    for (let j = 1; j <= w; j++){
+        column = document.createElement("td")
+        column.innerText = i * j;
+        row.append(column)
+    }
+    table.append(row)
+}
+</script>
+</body>
+
+<body>
+    <table>
+
+    </table>
+<style>
+    td{
+        width: 10px;
+        height: 10px;
+        padding: 0;
+        margin: 0;
+
+    }
+
+</style>
+<script>
+
+const table = document.getElementsByTagName("table")[0];
+let row;
+let column;
+for (let i = 1; i < 16; i++){
+    row = document.createElement("tr");
+    for (let j = 1; j < 16; j++){
+        column = document.createElement("td")
+        let column1 = j.toString(16)
+        let column2 = i.toString(16)
+        column.style.backgroundColor = "#" + column1 + column2 + "0";
+        row.append(column)
+    }
+    for (let j = 1; j < 16; j++){
+        column = document.createElement("td")
+        color = "#f" + i.toString(16) + j.toString(16);
+        column.style.backgroundColor = color;
+        row.append(column)
+    }
+    for (let j = 1; j < 16; j++){
+        column = document.createElement("td")
+        let column1 = (15-j).toString(16)
+        let column2 = i.toString(16)
+        column.style.backgroundColor = "#" + column1 + column2 + "f";
+        row.append(column)
+    }
+    table.append(row)
+}
+for (let i = 1; i < 16; i++){
+    row = document.createElement("tr");
+    for (let j = 1; j < 16; j++){
+        column = document.createElement("td")
+        let column1 = j.toString(16)
+        let column2 = (15-i).toString(16)
+        column.style.backgroundColor = "#" + column1 + column2 + "0";
+        row.append(column)
+    }
+    for (let j = 1; j < 16; j++){
+        column = document.createElement("td")
+        color = "#f" + (15-i).toString(16) + j.toString(16);
+        column.style.backgroundColor = color;
+        row.append(column)
+    }
+    for (let j = 1; j < 16; j++){
+        column = document.createElement("td")
+        let column1 = (15-j).toString(16)
+        let column2 = (15-i).toString(16)
+        column.style.backgroundColor = "#" + column1 + column2 + "f";
+        row.append(column)
+    }
+    table.append(row)
+}
+
+</script>
+</body>
+-->
+<body>
+    <table></table>
+    <h1>Háromszög</h1>
+    <table></table>
+<style>
+    td{
+        width: 10px;
+        height: 10px;
+        padding: 0;
+        margin: 0;
+    }
+
+</style>
+<script>
+
+const table = document.getElementsByTagName("table")[0];
+const table1 = document.getElementsByTagName("table")[1];
+
+
+
+let row;
+let column;
+for (let i = 1; i < 16; i++){
+    row = document.createElement("tr");
+    for (let j = 1; j < 16; j++){
+        column = document.createElement("td")
+        let column1 = j.toString(16)
+        let column2 = i.toString(16)
+        column.style.backgroundColor = "#" + column1 + column2 + "0";
+        row.append(column)
+    }
+    row = document.createElement("tr");
+    for (let j = 1; j < 16; j++){
+        column = document.createElement("td")
+        let column1 = j.toString(16)
+        let column2 = i.toString(16)
+        column.style.backgroundColor = "#" + column1 + column2 + "0";
+        row.append(column)
+    }
+}
+</script>
+</body>
+</html>

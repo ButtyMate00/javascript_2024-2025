@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Többsoros szöveg bevitel</title>
+</head>
+<body>
+  <form id="form5">
+    <textarea id="textareaInput" placeholder="Írj be legalább 10 karaktert"></textarea>
+    <button type="button" onclick="checkTextLength()">Ellenőrzés</button>
+  </form>
+  <p id="lengthMessage"></p>
+
+  <script>
+    function checkTextLength() {
+      const text = document.getElementById("textareaInput").value;
+      if (text.length >= 10) {
+        document.getElementById("lengthMessage").innerText = "Megfelelő hosszúságú!";
+      } else {
+        document.getElementById("lengthMessage").innerText = "A szöveg túl rövid!";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Szám duplázó</title>
+</head>
+<body>
+  <form id="form8">
+    <input type="number" id="numberInput" placeholder="Írj be egy számot">
+    <button type="button" onclick="doubleNumber()">Duplázás</button>
+  </form>
+  <p id="doubleMessage"></p>
+
+  <script>
+    function doubleNumber() {
+      const number = parseFloat(document.getElementById("numberInput").value);
+      document.getElementById("doubleMessage").innerText = "A szám duplája: " + (number * 2);
+    }
+  </script>
+</body>
+</html>

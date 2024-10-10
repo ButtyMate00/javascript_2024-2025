@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Legördülő lista</title>
+</head>
+<body>
+  <form id="form3">
+    <select id="dropdown" onchange="showSelectedValue()">
+      <option value="1">Opció 1</option>
+      <option value="2">Opció 2</option>
+      <option value="3">Opció 3</option>
+    </select>
+  </form>
+  <p id="selectedValue"></p>
+
+  <script>
+    function showSelectedValue() {
+      const selectedValue = document.getElementById("dropdown").value;
+      document.getElementById("selectedValue").innerText = "Kiválasztott érték: " + selectedValue;
+    }
+  </script>
+</body>
+</html>

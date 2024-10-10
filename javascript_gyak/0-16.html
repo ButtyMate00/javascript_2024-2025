@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Függvények</title>
+    <script>
+        // 1. Függvény, ami megállapítja, hogy a szám páros-e
+        function isEven(num) {
+            return num % 2 === 0;
+        }
+
+        // 2. Függvény, ami kiírja a nagyobbik számot
+        function maxOfTwo(a, b) {
+            return a > b ? a : b;
+        }
+
+        // 3. Függvény, ami meghatározza az 1 és 100 közötti páros számok összegét
+        function sumOfEvens() {
+            let sum = 0;
+            for (let i = 2; i <= 100; i += 2) {
+                sum += i;
+            }
+            return sum;
+        }
+
+        // 4. Függvény, ami kiszámolja egy szám számjegyeinek összegét
+        function sumOfDigits(num) {
+            return String(num)
+                .split('')
+                .map(Number)
+                .reduce((acc, curr) => acc + curr, 0);
+        }
+
+        // 5. Függvény, ami meghatározza a legnagyobb elemet egy tömbben
+        function maxInArray(arr) {
+            return Math.max(...arr);
+        }
+
+        // 6. Függvény, ami visszafelé ír egy szöveget
+        function reverseString(str) {
+            return str.split('').reverse().join('');
+        }
+
+        // 7. FizzBuzz függvény
+        function fizzBuzz() {
+            let result = [];
+            for (let i = 1; i <= 100; i++) {
+                if (i % 3 === 0 && i % 5 === 0) {
+                    result.push("FizzBuzz");
+                } else if (i % 3 === 0) {
+                    result.push("Fizz");
+                } else if (i % 5 === 0) {
+                    result.push("Buzz");
+                } else {
+                    result.push(i);
+                }
+            }
+            return result.join(", ");
+        }
+
+        // 8. Függvény, ami másodperceket percek és másodpercek kombinációjává alakít
+        function secondsToMinutes(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            return `${minutes} perc ${remainingSeconds} másodperc`;
+        }
+
+        // 9. Függvény, ami két szám szorzatát adja vissza
+        function multiply(a, b) {
+            return a * b;
+        }
+
+        // 10. Függvény, ami eldönti, hogy egy szám prímszám-e
+        function isPrime(num) {
+            if (num <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+        // 11. Függvény, ami kiszámolja egy tömb átlagát
+        function averageOfArray(arr) {
+            const sum = arr.reduce((acc, curr) => acc + curr, 0);
+            return sum / arr.length;
+        }
+
+        // 12. Függvény, ami növekvő sorrendbe rendezi a tömb elemeit
+        function sortArray(arr) {
+            return arr.sort((a, b) => a - b);
+        }
+
+        // 13. Függvény, ami összeadja egy tömb elemeit
+        function sumArray(arr) {
+            return arr.reduce((acc, curr) => acc + curr, 0);
+        }
+
+        // 14. Függvény, ami kiszámolja egy szám faktoriálisát
+        function factorial(num) {
+            if (num === 0) return 1;
+            return num * factorial(num - 1);
+        }
+
+        // 15. Függvény, ami kiszámolja a tömb elemeinek négyzetét
+        function squareArray(arr) {
+            return arr.map(num => num * num);
+        }
+
+        // 16. Függvény, ami kiszámolja a karakterek számát egy szóban vagy mondatban
+        function countCharacters(str) {
+            return str.length;
+        }
+
+        // Tesztelő funkciók
+        function testFunctions() {
+            console.log("Páros-e 4?", isEven(4)); // true
+            console.log("Nagyobb szám 10 és 20 között:", maxOfTwo(10, 20)); // 20
+            console.log("1 és 100 közötti páros számok összege:", sumOfEvens()); // 2550
+            console.log("1 + 2 + 3 számjegyeinek összege:", sumOfDigits(123)); // 6
+            console.log("Legnagyobb elem a tömbben:", maxInArray([1, 2, 3, 4, 5])); // 5
+            console.log("Visszafelé írt szöveg:", reverseString("hello")); // "olleh"
+            console.log("FizzBuzz eredmény:", fizzBuzz()); // kiírja a FizzBuzz-t
+            console.log("90 másodperc =", secondsToMinutes(90)); // "1 perc 30 másodperc"
+            console.log("2 * 3 =", multiply(2, 3)); // 6
+            console.log("11 prímszám?", isPrime(11)); // true
+            console.log("Tömb átlag:", averageOfArray([1, 2, 3, 4, 5])); // 3
+            console.log("Tömb növekvő sorrendbe rendezve:", sortArray([5, 3, 1, 4, 2])); // [1, 2, 3, 4, 5]
+            console.log("Tömb összeg:", sumArray([1, 2, 3, 4, 5])); // 15
+            console.log("5 faktoriálisa:", factorial(5)); // 120
+            console.log("Tömb négyzetek:", squareArray([1, 2, 3])); // [1, 4, 9]
+            console.log("Karakterek száma:", countCharacters("hello world")); // 11
+        }
+    </script>
+</head>
+<body>
+    <h1>JavaScript Függvények</h1>
+    <button onclick="testFunctions()">Teszteljük a függvényeket</button>
+</body>
+</html>

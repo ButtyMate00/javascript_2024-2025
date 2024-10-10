@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dátum bevitel</title>
+</head>
+<body>
+  <form id="form7">
+    <input type="date" id="dateInput">
+    <button type="button" onclick="checkDate()">Ellenőrzés</button>
+  </form>
+  <p id="dateMessage"></p>
+
+  <script>
+    function checkDate() {
+      const inputDate = new Date(document.getElementById("dateInput").value);
+      const today = new Date();
+      if (inputDate > today) {
+        document.getElementById("dateMessage").innerText = "A dátum nem lehet jövőbeli!";
+      } else {
+        document.getElementById("dateMessage").innerText = "Dátum helyes!";
+      }
+    }
+  </script>
+</body>
+</html>
